@@ -17,7 +17,7 @@
 
 | 输入图像 + Exemplar | 检测结果 | 计数结果 |
 | :---: | :---: | :---: |
-| ![输入图像](demo_pic\1.png) | ![检测结果](demo_pic\2.png) | ![计数结果](demo_pic\3.png) |
+| ![输入图像](.\demo_pic\1.png) | ![检测结果](demo_pic\2.png) | ![计数结果](demo_pic\3.png) |
 
 | 输入图像 + Exemplar | 检测结果 | 计数结果 |
 | :---: | :---: | :---: |
