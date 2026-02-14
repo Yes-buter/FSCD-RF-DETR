@@ -15,21 +15,12 @@
 仅需 **1 个示例框 (Single Exemplar Box)**，模型即可在极少样本条件下完成全图计数与检测。
 
 
-| 输入图像 + Exemplar | 检测结果 | 计数结果 |
+|  |  |  |
 | :---: | :---: | :---: |
-| ![输入图像](.\demo_pic\1.png) | ![检测结果](demo_pic\2.png) | ![计数结果](demo_pic\3.png) |
-
-| 输入图像 + Exemplar | 检测结果 | 计数结果 |
-| :---: | :---: | :---: |
-| ![输入图像](demo_pic\4.png) | ![检测结果](demo_pic\5.png) | ![计数结果](demo_pic\6.png) |
-
-| 输入图像 + Exemplar | 检测结果 | 计数结果 |
-| :---: | :---: | :---: |
-| ![输入图像](demo_pic\7.png) | ![检测结果](demo_pic\8.png) | ![计数结果](demo_pic\9.png) |
-
-| 输入图像 + Exemplar | 检测结果 | 计数结果 |
-| :---: | :---: | :---: |
-| ![输入图像](demo_pic\10.png) | ![检测结果](demo_pic\11.png) | ![计数结果](demo_pic\12.png) |
+| ![1](demo_pic\1.png) | ![2](demo_pic\2.png) | ![3](demo_pic\3.png) |
+| ![4](demo_pic\4.png) | ![5](demo_pic\5.png) | ![6](demo_pic\6.png) |
+| ![7](demo_pic\7.png) | ![8](demo_pic\8.png) | ![9](demo_pic\9.png) |
+| ![10](demo_pic\10.png) | ![11](demo_pic\11.png) | ![12](demo_pic\12.png) ||
 
 > *注：红色框为用户提供的 Exemplar，绿色框为模型检测出的目标。*
 
