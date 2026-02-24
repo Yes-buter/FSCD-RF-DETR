@@ -184,7 +184,7 @@ python EvalFscd.py \
 1. [项目概述](#1-项目概述)
 2. [原始 RF-DETR 架构基础](#2-原始-rf-detr-架构基础)
 3. [FSCD 任务定义](#3-fscd-任务定义)
-4. [新增��修改的文件清单](#4-新增与修改的文件清单)
+4. [新增修改的文件清单](#4-新增与修改的文件清单)
 5. [核心模型改造：LWDETR → FscdLWDETR](#5-核心模型改造lwdetr--fscdlwdetr)
 6. [损失函数改造](#6-损失函数改造)
 7. [匈牙利 Matcher 改造](#7-匈牙利-matcher-改造)
@@ -203,7 +203,7 @@ python EvalFscd.py \
 
 ---
 
-## 1. 项���概述
+## 1. 项目概述
 
 ### 1.1 改造动机
 
@@ -297,7 +297,7 @@ FSCD147/
 ├── gt_density_map_adaptive_512_512_object_VarV2/   # 密度图（未直接使用）
 ├── annotation_FSC147_384.json                      # 主标注文件
 ├── Train_Test_Val_FSC_147.json                     # 数据集划分
-├─�� instances_val.json                              # COCO 格式验证集标注
+├── instances_val.json                              # COCO 格式验证集标注
 └── instances_test.json                             # COCO 格式测试集标注
 ```
 
@@ -882,7 +882,7 @@ class SquareResize:
 
 ```python
 class PhotometricDistort:
-    """像素级颜���扰动，不影响任何坐标标注"""
+    """像素级颜扰动，不影响任何坐标标注"""
     def __init__(self):
         self.Distort = T.ColorJitter(
             brightness=0.4,
@@ -1173,7 +1173,7 @@ class RFDETRFSCDLargeConfig(RFDETRLargeConfig):
     exemplar_pool_size:int   = 7
 ```
 
-Large 版本无需修改模型���码，因为 `FscdLWDETR` 的所有维度都从 `TransformerModule.d_model`（即 `hidden_dim`）动态获取。
+Large 版本无需修改模型，因为 `FscdLWDETR` 的所有维度都从 `TransformerModule.d_model`（即 `hidden_dim`）动态获取。
 
 ### 12.3 FSCDTrainConfig
 
@@ -1362,7 +1362,7 @@ python TrainFscd.py --dataset_dir /path/to/FSCD147 \
 **问题**：初始训练 6 个 epoch 后 val_loss 完全卡死在 ~128，`val_mean_pred_count` 一直约为 4.0（GT 均值 63.8 差距悬殊）。
 
 **根因分析**：
-1. 无数据增强 → 3659 张训练图严重��拟合
+1. 无数据增强 → 3659 张训练图严重拟合
 2. `count_loss_coef=0.5` → count loss 在总 loss 中占比仅约 3%，信号太弱
 3. 评估用固定阈值 0.5 → 训练初期所有 sigmoid ≈ 0.01，全被过滤 → `hard_count = 0` → `MAE = GT_mean`，看不出任何进步
 
@@ -1506,7 +1506,7 @@ Output = Src * (1 + Scale) + Shift
 | 项目 | 内容 |
 |------|------|
 | **现象** | `AssertionError: image size 560×1066 not divisible by block_size=56` |
-| **原因** | 使用 `RandomResize([560], max_size=1120)` 后，只约束短边为 560，长边可以到 1120，且不一定���除 DINOv2 Backbone 的 `block_size=56`。 |
+| **原因** | 使用 `RandomResize([560], max_size=1120)` 后，只约束短边为 560，长边可以到 1120，且不一定除 DINOv2 Backbone 的 `block_size=56`。 |
 | **修复** | 改用 `SquareResize(560)`，强制输出为 `560×560` 方形，确保整除性。 |
 
 ### Bug 3：transforms 不同步 `exemplar_boxes`
