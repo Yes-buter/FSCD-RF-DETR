@@ -1,43 +1,24 @@
-没问题，明白了。我使用 `path/to/your_result_X.jpg` 这种显眼的伪路径作为占位符，方便你直接搜索替换。
-
-以下是最终版本的 `README.md` 代码：
-
----
-
 # RF-DETR-FSCD: Few-Shot Counting and Detection
 
-<div align="center">
+## <a name="Weights"></a>权重文件 (Weights)
+💡 Note: 算力限制当前提供的权重仅训练了 9 个 Epoch。随着训练轮数的增加，模型性能有望进一步提升。
+通过网盘分享的文件：checkpoint0009.pth
+链接: https://pan.baidu.com/s/1qjRXuc6sIl0WlkLGKzSyiA?pwd=wfei 提取码: wfei
 
-**基于 [RF-DETR (ICLR 2026)](https://www.google.com/search?q=https://github.com/roboflow/rf-detr) 改造的 SOTA 少样本目标计数与检测模型**
-
-[可视化展示](https://www.google.com/search?q=%23visual-results) • [简介](https://www.google.com/search?q=%23introduction) • [核心架构](https://www.google.com/search?q=%23model-architecture) • [安装](https://www.google.com/search?q=%23installation) • [训练](https://www.google.com/search?q=%23training) • [推理](https://www.google.com/search?q=%23inference)
-
-</div>
-
----
 
 ## <a name="visual-results"></a>🖼️ 可视化展示 (Visual Results)
 
 仅需 **1 个示例框 (Single Exemplar Box)**，模型即可在极少样本条件下完成全图计数与检测。
 
 
-| 输入图像 + Exemplar | 检测结果 | 计数结果 |
+|  |  |  |
 | :---: | :---: | :---: |
-| ![输入图像](demo_pic\1.png) | ![检测结果](demo_pic\2.png) | ![计数结果](demo_pic\3.png) |
+| ![1](demo_pic/1.png) | ![2](demo_pic/2.png) | ![3](demo_pic/3.png) |
+| ![4](demo_pic/4.png) | ![5](demo_pic/5.png) | ![6](demo_pic/6.png) |
+| ![7](demo_pic/7.png) | ![8](demo_pic/8.png) | ![9](demo_pic/9.png) |
+| ![10](demo_pic/10.png) | ![11](demo_pic/11.png) | ![12](demo_pic/12.png) |
 
-| 输入图像 + Exemplar | 检测结果 | 计数结果 |
-| :---: | :---: | :---: |
-| ![输入图像](demo_pic\4.png) | ![检测结果](demo_pic\5.png) | ![计数结果](demo_pic\6.png) |
-
-| 输入图像 + Exemplar | 检测结果 | 计数结果 |
-| :---: | :---: | :---: |
-| ![输入图像](demo_pic\7.png) | ![检测结果](demo_pic\8.png) | ![计数结果](demo_pic\9.png) |
-
-| 输入图像 + Exemplar | 检测结果 | 计数结果 |
-| :---: | :---: | :---: |
-| ![输入图像](demo_pic\10.png) | ![检测结果](demo_pic\11.png) | ![计数结果](demo_pic\12.png) |
-
-> *注：红色框为用户提供的 Exemplar，绿色框为模型检测出的目标。*
+> *注：黄色框为用户提供的 Exemplar，橙色框为模型检测出的目标。*
 
 ---
 
@@ -173,6 +154,15 @@ python EvalFscd.py \
 ```
 
 ---
+
+<a name="future-work"></a>📅 后续计划 (Future Work)
+当前版本展示了 RF-DETR 在少样本计数任务上的潜力，但仍有优化空间。我们计划在未来版本中通过以下方式进一步提升性能：
+
+[ ] 优化边界框损失 (Refine BBox Loss): 计划改进回归损失函数（如引入 CIoU 或 DIoU），以进一步提升检测框的定位精度 (IoU)。
+
+[ ] 引入 NMS 后处理 (Post-processing): 探索在推理阶段加入非极大值抑制 (Non-Maximum Suppression)，以减少密集场景下的重叠预测框。
+
+[ ] 增加训练轮次 (Longer Training): 目前提供的权重仅训练了 9 个 Epoch。我们计划进行更长时间的训练，以充分挖掘模型潜力并提升泛化能力。
 
 ## Acknowledgement
 
