@@ -882,20 +882,6 @@ def LrLambda(Step: int) -> float:
     return MinFactor + (1 - MinFactor) * 0.5 * (1 + math.cos(math.pi * Progress))
 
 Scheduler = LambdaLR(Optimizer, LrLambda)
-```
-
-可视化（默认 50 epoch，warmup=3）：
-
-```
-lr
- │   /‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾\
- │  /                        \
- │ /                           \
- │/                              ‾‾‾__
- └──────────────────────────────────→ epoch
-   0   3                         47  50
-       warmup      cosine decay
-```
 
 ### 10.4 EMA（Exponential Moving Average）
 
